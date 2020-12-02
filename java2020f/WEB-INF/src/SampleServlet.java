@@ -14,7 +14,7 @@ public void doGet(HttpServletRequest request,
     PrintWriter pw = response.getWriter();
     pw.println("<HTML>");
     pw.println ("<HEAD><TITLE>sample</TITLE></HEAD>");
-    pw.println ("<BODY>こんちには</BODY>");
+    pw.println ("<BODY>316025の卯木です</BODY>");
     pw.println ("</HTML>");
 
     }
