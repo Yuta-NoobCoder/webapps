@@ -1,0 +1,60 @@
+/* u316025 卯木 優大 */
+/* 入力画面用のCSS */
+
+body {
+    background-color: #90ee90;
+}
+
+.main {
+    text-align: center;
+    width: 800px;
+    /*縦いっぱいに表示*/
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px 0;
+}
+
+h1 {
+    color: #006400;
+    font-size: 50px;
+    font-weight: lighter; 
+    line-height: 50px;
+}
+
+a, input[type="submit"]{
+    display: inline-block;
+    width: 400px;
+    height: 80px;
+    margin-bottom: 20px;
+    line-height: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.input{
+    width: 400px;
+    margin: 50px auto;
+}
+
+input[type="text"]{
+    font-size: 30px;
+}
+
+label {
+    display: block;
+    font-size: 30px;
+    text-align: start;
+}
+
+.ok{
+    background-color: #32cd32;
+    color: white;
+}
+
+.cancel {
+    background-color: #ffa500;
+    color: white;
+}
+
