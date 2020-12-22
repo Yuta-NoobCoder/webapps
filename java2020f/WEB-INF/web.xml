@@ -1,3 +1,6 @@
+<!--316025 卯木 優大-->
+<!--web.xml-->
+
 <web-app>
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
@@ -6,5 +9,14 @@
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/greeting</url-pattern>
+    </servlet-mapping>
+    <!--開設処理-->
+    <servlet>
+        <servlet-name>BankOpenServlet</servlet-name>
+        <servlet-class>BankServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BankOpenServlet</servlet-name>
+        <url-pattern>/bank</url-pattern>
     </servlet-mapping>
 </web-app>
