@@ -22,7 +22,7 @@ public class BankServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
 
         String name = request.getParameter("account");
-        int result = Bank.open(name);
+        int result = bank.open(name);
 
         if(result == 0) {
             pw.println(
