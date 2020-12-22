@@ -26,41 +26,37 @@ public class BankServlet extends HttpServlet {
 
         if(result == 0) {
             pw.println(
-                "<!DOCTYPE html>
-                <html>
-
-                <head>
-                    <link rel=\"stylesheet\" href=\"static/account_input.css\">
-                    <meta charset=\"UTF-8\">
-                </head>
-
-                <body>
-                    <div class=\"main\">
-                        <h1>開設成功</h1>
-                        <h3>" + name + "様, ご開設いただきありがとうございます。トップページよりご預金、引き出しが行えます。</h3>
-                        <a class=\"ok\" href=\"index.html\">戻る</a>
-                    </div>
-                </body>
-            </html>"
+                "<!DOCTYPE html>"
+                + "<html>"  
+                + "<head>"  
+                +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                +    "<meta charset=\"UTF-8\">"
+                + "</head>"
+                + "<body>"
+                +    "<div class=\"main\">"
+                +       "<h1>開設成功</h1>"
+                +        "<h3>" + name + "様の口座開設に成功しました。トップページにてお取引が行えます。</h3>"
+                +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                +    "</div>"
+                + "</body>"
+                + "</html>"
             );
         } else { 
             pw.println(
-                "<!DOCTYPE html>
-                 <html>
-
-                <head>
-                    <link rel=\"stylesheet\" href=\"static/account_input.css\">
-                    <meta charset=\"UTF-8\">
-                </head>
-
-                <body>
-                    <div class=\"main\">
-                        <h1>開設失敗</h1>
-                        <h3>" + name + "様の口座開設に失敗しました。カスタマーセンターまでお問合せください。</h3>
-                        <a class=\"ok\" href=\"index.html\">戻る</a>
-                    </div>
-                </body>
-            </html>"
+                "<!DOCTYPE html>"
+                + "<html>"  
+                + "<head>"  
+                +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                +    "<meta charset=\"UTF-8\">"
+                + "</head>"
+                + "<body>"
+                +    "<div class=\"main\">"
+                +       "<h1>開設失敗</h1>"
+                +        "<h3>" + name + "様の口座開設に失敗しました。カスタマーセンターまでお問合せください。</h3>"
+                +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                +    "</div>"
+                + "</body>"
+                + "</html>"
             );
         }
     } 
