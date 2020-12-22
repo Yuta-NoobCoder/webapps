@@ -1,3 +1,6 @@
+// 316025 卯木 優大
+// SampleServlet.java
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
