@@ -12,11 +12,11 @@
     </servlet-mapping>
     <!--開設処理-->
     <servlet>
-        <servlet-name>BankOpenServlet</servlet-name>
+        <servlet-name>BankServlet</servlet-name>
         <servlet-class>BankServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>BankOpenServlet</servlet-name>
+        <servlet-name>BankServlet</servlet-name>
         <url-pattern>/bank</url-pattern>
     </servlet-mapping>
 </web-app>
