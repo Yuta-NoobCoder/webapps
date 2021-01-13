@@ -63,7 +63,61 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("close") == 0) {
-            pw.println("close");
+            int result = bank.open(name);
+            if(result == 0) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>解約成功</h1>"
+                    +        "<h3>" + name + "様の口座解約に成功しました。今までご利用ありがとうございました。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -1) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>解約失敗</h1>"
+                    +        "<h3>残高が0でないため" + name + "様の口座解約に失敗しました。すべての残高をお引き出しの上もう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -7) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>解約失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため" + name + "様の口座解約に失敗しました。口座名をご確認の上もう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
         }
         else if(command.compareTo("deposit") == 0) {
             pw.println("deposit");
