@@ -12,13 +12,12 @@
 <body>
     <div class="main">
         <h1>口座のご解約</h1>
-        <form>
-            <!--formタグの中身は追って作成-->
+        <form action="close" method="GET">
+            <input type="hidden" name="command" value="close">
             <div class="input">
                 <label for="account">口座名</label>
-                <input id="account" type="text" name="account" placeholder="解約する口座名">
+                <input id="account" type="text" name="name" placeholder="解約する口座名">
             </div>
-            <!--<input type="submit" class="ok" value="上記の内容で解約">-->
             <a class="ok" href="close-success.html">上記の内容で解約</a>
         </form>
         <a class="cancel" href="index.html">キャンセル</a>

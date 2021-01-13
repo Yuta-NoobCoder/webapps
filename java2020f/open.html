@@ -12,13 +12,13 @@
 <body>
     <div class="main">
         <h1>口座のご開設</h1>
-        <form action="bank" method="GET">
+        <form action="open" method="GET">
+            <input type="hidden" name="command" value="open">
             <div class="input">
                 <label for="account">口座名</label>
-                <input id="account" type="text" name="account" placeholder="ご希望の口座名">
+                <input id="account" type="text" name="name" placeholder="ご希望の口座名">
             </div>
             <input type="submit" class="ok" value="上記の内容でご開設">
-            <!--<a class="ok" href="open-success.html">上記の内容でご開設</a>-->
         </form>
         <a class="cancel" href="index.html">キャンセル</a>
     </div>

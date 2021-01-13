@@ -12,13 +12,12 @@
 <body>
     <div class="main">
         <h1>残高のご照会</h1>
-        <form>
-            <!--formタグの中身は追って作成-->
+        <form action="balance" method="GET">
+            <input type="hidden" name="command" value="balance">
             <div class="input">
                 <label for="account">口座名</label>
-                <input id="account" type="text" name="account" placeholder="口座名">
+                <input id="account" type="text" name="name" placeholder="口座名">
             </div>
-            <!--<input type="submit" class="ok" value="上記の内容で照会">-->
             <a class="ok" href="balance-success.html">上記の内容で照会</a>
         </form>
         <a class="cancel" href="index.html">キャンセル</a>

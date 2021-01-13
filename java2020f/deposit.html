@@ -12,15 +12,14 @@
 <body>
     <div class="main">
         <h1>ご預金</h1>
-        <form>
-            <!--formタグの中身は追って作成-->
-            <div class="input">
+        <form action="deposit" method="GET">
+            <input type="hidden" name="command" value="deposit">
+            <div class="input" >
                 <label for="account">口座名</label>
-                <input id="account" type="text" name="account" placeholder="口座名">
+                <input id="account" type="text" name="name" placeholder="口座名">
                 <label for="amount">金額</label>
                 <input id="amount" type="text" name="amount" placeholder="金額">
             </div>
-            <!--<input type="submit" class="ok" value="上記の内容でお預け">-->
             <a class="ok" href="deposit-success.html">上記の内容でお預け</a>
         </form>
         <a class="cancel" href="index.html">キャンセル</a>

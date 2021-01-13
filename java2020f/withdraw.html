@@ -12,11 +12,11 @@
 <body>
     <div class="main">
         <h1>お引き出し</h1>
-        <form>
-            <!--formタグの中身は追って作成-->
+        <form action="withdraw" method="GET">
+            <input type="hidden" name="command" value="withdraw">
             <div class="input">
                 <label for="account">口座名</label>
-                <input id="account" type="text" name="account" placeholder="口座名">
+                <input id="account" type="text" name="name" placeholder="口座名">
                 <label for="amount">金額</label>
                 <input id="amount" type="text" name="amount" placeholder="金額">
             </div>
