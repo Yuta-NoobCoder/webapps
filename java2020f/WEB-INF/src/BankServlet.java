@@ -63,7 +63,7 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("close") == 0) {
-            int result = bank.open(name);
+            int result = bank.close(name);
             if(result == 0) {
                 pw.println(
                     "<!DOCTYPE html>"
