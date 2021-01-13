@@ -24,7 +24,7 @@ public class BankServlet extends HttpServlet {
         String name = request.getParameter("name");
         
         //解説処理
-        if(command.compareTo("open")) {
+        if(command.compareTo("open") == 0) {
             int result = bank.open(name);
             if(result == 0) {
                 pw.println(
@@ -62,16 +62,16 @@ public class BankServlet extends HttpServlet {
                 );
             }
         }
-        else if(command.compareTo("close")) {
+        else if(command.compareTo("close") == 0) {
             pw.println("close");
         }
-        else if(command.compareTo("deposit")) {
+        else if(command.compareTo("deposit") == 0) {
             pw.println("deposit");
         }
-        else if(command.compareTo("withdraw")) {
+        else if(command.compareTo("withdraw") == 0) {
             pw.println("withdraw");
         }
-        else if(command.compareTo("balance")) {
+        else if(command.compareTo("balance") == 0) {
             pw.println("balance");
         }
 
