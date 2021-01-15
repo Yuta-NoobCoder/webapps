@@ -52,6 +52,27 @@ public class Bank {
         else return -7;
     }
 
+    public int deposit(String name, String amount) { 
+        
+        int int_amount, result;
+        
+        //数値にキャスト
+        try {
+            int_amount = Integer.parseInt(amount);
+        }
+        catch(NumberFormatException e) {
+            //showBalanceを用いて口座有無の判定
+            if(this.showBalance(name) == -7)
+                return -7; 
+            else
+                return -4;
+        }
+
+        result = this.deposit(name, int_amount);
+        
+        return result;
+    }
+
     public int withdraw(String name, int amount) { 
 
         Account account = customer.get(name);
@@ -71,6 +92,28 @@ public class Bank {
         }
         else return -7;
     }
+
+    public int withdraw(String name, String amount) { 
+        
+        int int_amount, result;
+        
+        //数値にキャスト
+        try {
+            int_amount = Integer.parseInt(amount);
+        }
+        catch(NumberFormatException e) {
+            //showBalanceを用いて口座有無の判定
+            if(this.showBalance(name) == -7)
+                return -7; 
+            else
+                return -4;
+        }
+        
+        result = this.withdraw(name, int_amount);
+        
+        return result;
+    }
+
     public int showBalance(String name ) {
 
         Account account = customer.get(name);
