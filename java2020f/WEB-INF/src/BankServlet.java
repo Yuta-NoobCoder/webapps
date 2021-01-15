@@ -236,7 +236,7 @@ public class BankServlet extends HttpServlet {
                     +    "<div class=\"main\">"
                     +       "<h1>引き出し失敗</h1>"
                     +        "<h3>" + name + "様の口座から " + amount + "円 の引き出しに失敗しました。</h3>"
-                    +        "<h3>0円以下の金額を引き出しすることはできません。</h3>"
+                    +        "<h3>現在の残高を超える金額を引き出しすることはできません。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
