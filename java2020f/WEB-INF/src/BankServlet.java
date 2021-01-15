@@ -26,7 +26,7 @@ public class BankServlet extends HttpServlet {
         
         //開設処理
         if(command.compareTo("open") == 0) {
-            int result = bank.open(name);
+            result = bank.open(name);
             if(result == 0) {
                 pw.println(
                     "<!DOCTYPE html>"
@@ -137,7 +137,7 @@ public class BankServlet extends HttpServlet {
                     +    "<div class=\"main\">"
                     +       "<h1>解約成功</h1>"
                     +        "<h3>" + name + "様の口座へ" + amount + "円 の預金に成功しました。</h3>"
-                    +        "<h3>現在の残高は" + bak.showBalance(name) + "円 です。</h3>"
+                    +        "<h3>現在の残高は" + bank.showBalance(name) + "円 です。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -199,7 +199,6 @@ public class BankServlet extends HttpServlet {
                     + "</html>"
                 );
             }
-            
         }
         else if(command.compareTo("withdraw") == 0) {
             pw.println("withdraw");
