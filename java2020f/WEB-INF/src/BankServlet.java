@@ -302,8 +302,26 @@ public class BankServlet extends HttpServlet {
         else if(command.compareTo("balance") == 0) {
             
             result = bank.showBalance(name); 
-            
-            if(result == 0) {
+
+            if(result == -7) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>照会失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため、" + name + "様の口座残高の照会に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            } 
+            else {
                 pw.println(
                     "<!DOCTYPE html>"
                     + "<html>"  
@@ -321,24 +339,6 @@ public class BankServlet extends HttpServlet {
                     + "</html>"
                 );
             }
-            else if(result == -7) {
-                pw.println(
-                    "<!DOCTYPE html>"
-                    + "<html>"  
-                    + "<head>"  
-                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
-                    +    "<meta charset=\"UTF-8\">"
-                    + "</head>"
-                    + "<body>"
-                    +    "<div class=\"main\">"
-                    +       "<h1>照会失敗</h1>"
-                    +        "<h3>存在しない口座が指定されたため、" + name + "様の口座残高の照会に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
-                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
-                    +    "</div>"
-                    + "</body>"
-                    + "</html>"
-                );
-             } 
         }
     }
 }
