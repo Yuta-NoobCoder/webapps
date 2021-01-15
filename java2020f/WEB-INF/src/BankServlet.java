@@ -22,8 +22,9 @@ public class BankServlet extends HttpServlet {
         PrintWriter pw = response.getWriter();
         String command = request.getParameter("command");
         String name = request.getParameter("name");
+        int result;
         
-        //解説処理
+        //開設処理
         if(command.compareTo("open") == 0) {
             int result = bank.open(name);
             if(result == 0) {
@@ -54,7 +55,7 @@ public class BankServlet extends HttpServlet {
                     + "<body>"
                     +    "<div class=\"main\">"
                     +       "<h1>開設失敗</h1>"
-                    +        "<h3>" + name + "様の口座開設に失敗しました。カスタマーセンターまでお問合せください。</h3>"
+                    +        "<h3>すでに同名の口座が存在するため" + name + "様の口座開設に失敗しました。<br>口座名を変更の上もう一度お試しください。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -63,7 +64,7 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("close") == 0) {
-            int result = bank.close(name);
+            result = bank.close(name);
             if(result == 0) {
                 pw.println(
                     "<!DOCTYPE html>"
@@ -93,7 +94,7 @@ public class BankServlet extends HttpServlet {
                     + "<body>"
                     +    "<div class=\"main\">"
                     +       "<h1>解約失敗</h1>"
-                    +        "<h3>残高が0でないため" + name + "様の口座解約に失敗しました。すべての残高をお引き出しの上もう一度お試しください。</h3>"
+                    +        "<h3>残高が0でないため" + name + "様の口座解約に失敗しました。<br>すべての残高をお引き出しの上もう一度お試しください。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -111,7 +112,7 @@ public class BankServlet extends HttpServlet {
                     + "<body>"
                     +    "<div class=\"main\">"
                     +       "<h1>解約失敗</h1>"
-                    +        "<h3>存在しない口座が指定されたため" + name + "様の口座解約に失敗しました。口座名をご確認の上もう一度お試しください。</h3>"
+                    +        "<h3>存在しない口座が指定されたため" + name + "様の口座解約に失敗しました。<br>口座名をご確認の上もう一度お試しください。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -120,7 +121,85 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("deposit") == 0) {
-            pw.println("deposit");
+
+            String amount = request.getParameter("amount");
+            result = bank.deposit(name, amount);
+
+            if(result == 0) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>解約成功</h1>"
+                    +        "<h3>" + name + "様の口座へ" + amount + "円 の預金に成功しました。</h3>"
+                    +        "<h3>現在の残高は" + bak.showBalance(name) + "円 です。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -3) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>預金失敗</h1>"
+                    +        "<h3>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。</h3>"
+                    +        "<h3>0円以下の金額を預金することはできません。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -4) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>預金失敗</h1>"
+                    +        "<h3>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。金額は整数でご入力ください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -7) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>預金失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため、<br>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            
         }
         else if(command.compareTo("withdraw") == 0) {
             pw.println("withdraw");
