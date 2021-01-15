@@ -136,7 +136,7 @@ public class BankServlet extends HttpServlet {
                     + "<body>"
                     +    "<div class=\"main\">"
                     +       "<h1>解約成功</h1>"
-                    +        "<h3>" + name + "様の口座へ" + amount + "円 の預金に成功しました。</h3>"
+                    +        "<h3>" + name + "様の口座へ" + amount + "円 の引き出しに成功しました。</h3>"
                     +        "<h3>現在の残高は" + bank.showBalance(name) + "円 です。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
@@ -154,9 +154,9 @@ public class BankServlet extends HttpServlet {
                     + "</head>"
                     + "<body>"
                     +    "<div class=\"main\">"
-                    +       "<h1>預金失敗</h1>"
-                    +        "<h3>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。</h3>"
-                    +        "<h3>0円以下の金額を預金することはできません。</h3>"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>" + name + "様の口座へ " + amount + "円 の引き出しに失敗しました。</h3>"
+                    +        "<h3>0円以下の金額を引き出しすることはできません。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -173,8 +173,8 @@ public class BankServlet extends HttpServlet {
                     + "</head>"
                     + "<body>"
                     +    "<div class=\"main\">"
-                    +       "<h1>預金失敗</h1>"
-                    +        "<h3>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。金額は整数でご入力ください。</h3>"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>" + name + "様の口座へ " + amount + "円 の引き出しに失敗しました。金額は整数でご入力ください。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -191,8 +191,8 @@ public class BankServlet extends HttpServlet {
                     + "</head>"
                     + "<body>"
                     +    "<div class=\"main\">"
-                    +       "<h1>預金失敗</h1>"
-                    +        "<h3>存在しない口座が指定されたため、<br>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため、<br>" + name + "様の口座へ " + amount + "円 の引き出しに失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
                     +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
                     +    "</div>"
                     + "</body>"
@@ -201,7 +201,103 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("withdraw") == 0) {
-            pw.println("withdraw");
+            
+            String amount = request.getParameter("amount");
+            result = bank.withdraw(name, amount);
+
+            if(result == 0) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>解約成功</h1>"
+                    +        "<h3>" + name + "様の口座から " + amount + "円 の引き出しに成功しました。</h3>"
+                    +        "<h3>現在の残高は" + bank.showBalance(name) + "円 です。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -1) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>" + name + "様の口座から " + amount + "円 の引き出しに失敗しました。</h3>"
+                    +        "<h3>0円以下の金額を引き出しすることはできません。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -3) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>" + name + "様の口座から " + amount + "円 の引き出しに失敗しました。</h3>"
+                    +        "<h3>0円以下の金額を引き出しすることはできません。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -4) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>" + name + "様の口座から " + amount + "円 の引き出しに失敗しました。金額は整数でご入力ください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -7) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>引き出し失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため、<br>" + name + "様の口座から " + amount + "円 の引き出しに失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
         }
         else if(command.compareTo("balance") == 0) {
             pw.println("balance");
