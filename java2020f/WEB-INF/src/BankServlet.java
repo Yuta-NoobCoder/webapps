@@ -300,6 +300,9 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("balance") == 0) {
+            
+            result = bank.showBalance(name); 
+            
             if(result == 0) {
                 pw.println(
                     "<!DOCTYPE html>"
