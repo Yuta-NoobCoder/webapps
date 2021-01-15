@@ -300,8 +300,42 @@ public class BankServlet extends HttpServlet {
             }
         }
         else if(command.compareTo("balance") == 0) {
-            pw.println("balance");
+            if(result == 0) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>照会成功</h1>"
+                    +        "<h3>照会に成功しました。" + name + "様の口座残高は " + bank.showBalance(name) + "円です。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+            }
+            else if(result == -7) {
+                pw.println(
+                    "<!DOCTYPE html>"
+                    + "<html>"  
+                    + "<head>"  
+                    +    "<link rel=\"stylesheet\" href=\"static/account_input.css\">"  
+                    +    "<meta charset=\"UTF-8\">"
+                    + "</head>"
+                    + "<body>"
+                    +    "<div class=\"main\">"
+                    +       "<h1>照会失敗</h1>"
+                    +        "<h3>存在しない口座が指定されたため、" + name + "様の口座残高の照会に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+                    +        "<a class=\"ok\" href=\"index.html\">戻る</a>" 
+                    +    "</div>"
+                    + "</body>"
+                    + "</html>"
+                );
+             } 
         }
-
-    } 
- }
+    }
+}
