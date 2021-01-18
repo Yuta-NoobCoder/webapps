@@ -20,10 +20,35 @@
                 <label for="amount">金額</label>
                 <input id="amount" type="text" name="amount" placeholder="金額">
             </div>
-            <input type="submit" class="ok" value="上記の内容でご預金">
+            <input type="submit" id="submit" class="ok" value="上記の内容でご預金">
         </form>
         <a class="cancel" href="index.html">キャンセル</a>
     </div>
+    <script type="text/javascript">
+        //空入力防止用Script
+        const button = document.getElementById("submit");
+        const account = document.getElementById("account");
+        const amount = document.getElementById("amount");
+        const texts = document.querySelectorAll("input[type=\"text\"]");
+        //初期状態では無効化
+        button.disabled = true;
+        button.style.backgroundColor="gray";
+        //すべての入力項目が空でなければsumbit可能
+        texts.forEach(element => {
+            element.addEventListener("change", ()=> {
+                var text1 = account.value;
+                var text2 = amount.value;
+                if(text1.length != 0 && text2.length) {
+                    button.disabled = false;
+                    button.style.backgroundColor="#32cd32";
+                }
+                else {
+                    button.disabled = true;
+                    button.style.backgroundColor="gray";
+                }
+            }); 
+        });
+    </script>
 </body>
 
 </html>

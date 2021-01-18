@@ -18,10 +18,30 @@
                 <label for="account">口座名</label>
                 <input id="account" type="text" name="name" placeholder="解約する口座名">
             </div>
-            <input type="submit" class="ok" value="上記の内容で解約">
+            <input type="submit" id="submit" class="ok" value="上記の内容で解約">
         </form>
         <a class="cancel" href="index.html">キャンセル</a>
     </div>
+    <script type="text/javascript">
+        //空入力防止用Script
+        const button = document.getElementById("submit");
+        const name = document.getElementById("account");
+        //初期状態では無効化
+        button.disabled = true;
+        button.style.backgroundColor="gray";
+        //空でなければsumbit可能
+        name.addEventListener("change", ()=> {
+            var text = document.getElementById("account").value;
+            if(text.length != 0) {
+                button.disabled = false;
+                button.style.backgroundColor="#32cd32";
+            }
+            else {
+                button.disabled = true;
+                button.style.backgroundColor="gray";
+            }
+        })
+    </script>
 </body>
 
 </html>
