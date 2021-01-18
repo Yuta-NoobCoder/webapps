@@ -289,7 +289,7 @@ public class BankTest {
         //正常な照会
         System.out.println("・テストケース28");
         result = bank.showBalance("test");
-        if(result > 0) System.out.println("残高 : " + result + " で正常です");
+        if(result > 0) System.out.println("残高" + result + "で正常です");
         else System.out.println("返り値" + result + "で異常です"); 
 
         //存在しない口座を照会
