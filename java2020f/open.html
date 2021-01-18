@@ -18,10 +18,19 @@
                 <label for="account">口座名</label>
                 <input id="account" type="text" name="name" placeholder="ご希望の口座名">
             </div>
-            <input type="submit" class="ok" value="上記の内容でご開設">
+            <input type="submit" disabled id="sumbit" class="ok" value="上記の内容でご開設">
         </form>
         <a class="cancel" href="index.html">キャンセル</a>
     </div>
+    <script type="text/javascript">
+        //空入力の防止
+        document.getElementById("account").addEventListener("change", ()=> {
+            var text = document.getElementById("account").value;
+            if(text.length != 0) {
+
+            }
+        })
+    </script>
 </body>
 
 </html>
