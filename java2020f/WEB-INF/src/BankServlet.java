@@ -184,10 +184,8 @@ public class BankServlet extends HttpServlet {
             + "</head>"
             + "<body>"
             + "<div class=\"main\">"
-            + "<h1></h1>"預金失敗
-            + "<h3>存在しない口座が指定されたため、<br>" + name +
-            "様の口座へ " + amount +
-            "円 の預金に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
+            + "<h1>預金</h1>"
+            + "<h3>存在しない口座が指定されたため、<br>" + name + "様の口座へ " + amount + "円 の預金に失敗しました。<br>口座名をご確認のうえもう一度お試しください。</h3>"
             + "<a class=\"ok\" href=\"index.html\">戻る</a>"
             + "</div>"
             + "</body>"
