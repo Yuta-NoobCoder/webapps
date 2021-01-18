@@ -1,3 +1,6 @@
+/* 316025 Yuta Uki */
+/* BankTest.java */
+
 public class BankTest {
     public static void main(String[] args) {
         
