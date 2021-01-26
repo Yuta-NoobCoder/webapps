@@ -40,7 +40,7 @@ public class Student {
 
             if(point >= 90)
                 point_sum += 4 * unit;
-            else ifpoint >= 80)
+            else if (point >= 80)
                 point_sum += 3 * unit;
             else if(point >= 70)
                 point_sum += 2 * unit;
