@@ -19,18 +19,33 @@ public class GradeServlet extends HttpServlet {
         pw.println("<html>");
         pw.println("<head><title>OnlineGradeReport</title></head>");
         pw.println("<body>");
+        
         if(command.equals("take")) {
             String name = request.getParameter("name");
             String unit = request.getParameter("unit");
             String point = request.getParameter("point");
             student.take(name,toInt(unit),toInt(point));
             pw.println("新規科目の登録に成功しました．");
+        
+        } else if(command.equals("list")){
+            String[] subs = student.list();
+            for(String str : subs) {
+                pw.println(str);
+            }
+        
+        } else if(command.equals("gpa")){
+            float gpa = student.getGPA();
+            pw.println(gpa);
+        
         } else {
             pw.println("指定された処理が不正です．");
         }
+
         pw.println("<a href='student.html'>戻る</a>");
         pw.println("</body>");
         pw.println("</html>");
+
+
     }
     
     public int toInt(String gaku) {
