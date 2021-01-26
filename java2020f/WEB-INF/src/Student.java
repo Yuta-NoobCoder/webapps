@@ -16,9 +16,9 @@ public class Student {
         String[] names = grades.keySet().toArray(new String[grades.keySet().size()]);//科目名の配列
         String[] subs = new String[names.length];
         for(int i=0; i<subs.length; i++) {
-            subs[i]="科目名:"+names[i];
-            subs[i]+="　単位数:"+ grades.get(names[i]).unit;
-            subs[i]+="　成績:"+ grades.get(names[i]).point;
+            subs[i]="  科目名:"+ names[i];
+            subs[i]+="　単位数:"+ grades.get(names[i]).getUnit();
+            subs[i]+="　成績:"+ grades.get(names[i]).getPoint();
         }
         return subs;
     }
@@ -26,6 +26,7 @@ public class Student {
     public float getGPA() {
         
         int unit;
+        int point;
         int unit_sum = 0; // 単位数
         int point_sum = 0; // 成績(4段階) * 単位数
         float mean;
@@ -35,14 +36,15 @@ public class Student {
             
             Subject sub = grades.get("name");
             unit = sub.getUnit();
+            point = sub.getPoint();
 
-            if(sub.getPoint() >= 90)
+            if(point >= 90)
                 point_sum += 4 * unit;
-            else if(sub.getPoint() >= 80)
+            else ifpoint >= 80)
                 point_sum += 3 * unit;
-            else if(sub.getPoint() >= 70)
+            else if(point >= 70)
                 point_sum += 2 * unit;
-            else if(sub.getPoint() >= 60)
+            else if(point >= 60)
                 point_sum += unit;
             
             unit_sum += unit;

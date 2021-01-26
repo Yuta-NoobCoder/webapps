@@ -1,7 +1,7 @@
 public class Subject {
   private String point;
   private int unit;
-  public Subject(int myUnit, String myPoint) {
+  public Subject(int myUnit, int myPoint) {
     point = myPoint;
     unit = myUnit;
   }
