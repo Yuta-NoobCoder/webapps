@@ -34,8 +34,9 @@ public class GradeServlet extends HttpServlet {
     }
     
     public int toInt(String gaku) {
+        int amount;
         try {
-           int amount = Integer.parseInt(gaku);
+            amount = Integer.parseInt(gaku);
         } catch(NumberFormatException e) {
             amount=-1;
         }
